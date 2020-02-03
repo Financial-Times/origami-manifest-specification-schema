@@ -1,0 +1,23 @@
+{
+  "name": "origami-manifest-schema",
+  "version": "1.0.0",
+  "description": "[JSON schema](https://json-schema.org/) for the [Origami.json manifest specification](https://origami.ft.com/spec/v1/manifest/)",
+  "main": "manifest.json",
+  "scripts": {
+    "test": "ajv compile -s ./manifest.json"
+  },
+  "keywords": [],
+  "author": "chee <chee@snoot.club>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Financial-Times/origami-manifest-specification-schema.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Financial-Times/origami-manifest-specification-schema/issues"
+  },
+  "homepage": "https://github.com/Financial-Times/origami-manifest-specification-schema#readme",
+  "devDependencies": {
+    "ajv-cli": "^3.0.0"
+  }
+}

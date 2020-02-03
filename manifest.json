@@ -1,0 +1,215 @@
+{
+	"$id": "https://origami.ft.com/spec/v1/manifest/schema",
+	"type": "object",
+	"definitions": {
+		"demo-options": {
+			"type": "object",
+			"properties": {
+				"template": {
+					"type": "string"
+				},
+				"sass": {
+					"type": "string"
+				},
+				"js": {
+					"type": "string"
+				},
+				"data": {
+					"type": "object"
+				},
+				"documentClasses": {
+					"type": "string"
+				},
+				"dependencies": {
+					"type": "array",
+					"children": "string"
+				}
+			},
+			"required": ["template"]
+		},
+		"brands": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"enum": ["master", "internal", "whitelabel"]
+			}
+		}
+	},
+	"allOf": [
+		{
+			"oneOf": [
+				{
+					"properties": {
+						"origamiType": {
+							"type": "string",
+							"enum": [
+								"imageset"
+							]
+						}
+					}
+				},
+				{
+					"properties": {
+						"origamiType": {
+							"type": "string",
+							"enum": [
+								"module"
+							]
+						},
+						"browserFeatures": {
+							"type": "object",
+							"properties": {
+								"required": {
+									"type": "array",
+									"children": {
+										"type": "string"
+									}
+								},
+								"optional": {
+									"type": "array",
+									"children": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				},
+				{
+					"properties": {
+						"origamiType": {
+							"type": "string",
+							"enum": [
+								"service"
+							]
+						}
+					},
+					"serviceUrl": {
+						"type": "string"
+					},
+					"required": ["serviceUrl"]
+				}
+			]
+		},
+		{
+			"properties": {
+				"description": {
+					"type": "string"
+				},
+				"origamiType": {
+					"type": "string",
+					"enum": ["module", "imageset", "service"]
+				},
+				"origamiVersion": {
+					"type": "number",
+					"enum": [1]
+				},
+				"brands": {
+					"$ref": "#/definitions/brands"
+				},
+				"keywords": {
+					"oneOf": [
+						{
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						{
+							"type": "string"
+						}
+					]
+				},
+				"origamiCategory": {
+					"type": "string",
+					"enum": [
+						"components",
+						"primitives",
+						"utilities",
+						"layouts"
+					]
+				},
+				"support": {
+					"type": "string",
+					"format": "uri"
+				},
+				"supportStatus": {
+					"type": "string",
+					"enum": [
+						"active",
+						"maintained",
+						"deprecated",
+						"dead",
+						"experimental"
+					]
+				},
+				"supportContact": {
+					"type": "object",
+					"properties": {
+						"email": {
+							"type": "string",
+							"format": "email"
+						},
+						"slack": {
+							"type": "string",
+							"pattern": "^[\\w-]+/[\\w-]{1,21}$"
+						}
+					},
+					"required": ["email", "slack"]
+				},
+				"ci": {},
+				"demosDefaults": {
+					"$ref": "#/definitions/demo-options"
+				},
+				"demos": {
+					"type": "array",
+					"children": {
+						"allOf": [
+							{"$ref": "#/definitions/demo-options"},
+							{
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"title": {
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									},
+									"template": {
+										"type": "string"
+									},
+									"brands": {
+										"$ref": "#/definitions/brands"
+									},
+									"hidden": {
+										"type": "boolean"
+									},
+									"display_html": {
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"template",
+									"name",
+									"title",
+									"description"
+								]
+							}
+						]
+					}
+				}
+			},
+			"required": [
+				"description",
+				"origamiType",
+				"origamiVersion",
+				"keywords",
+				"origamiCategory",
+				"support",
+				"supportStatus"
+			]
+		}
+	]
+}
