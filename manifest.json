@@ -41,10 +41,7 @@
 				{
 					"properties": {
 						"origamiType": {
-							"type": "string",
-							"enum": [
-								"imageset"
-							]
+							"type": "null"
 						}
 					}
 				},
@@ -53,7 +50,29 @@
 						"origamiType": {
 							"type": "string",
 							"enum": [
+								"imageset"
+							]
+						}
+					}
+				},
+				{
+					"required": [
+						"origamiCategory"
+					],
+					"properties": {
+						"origamiType": {
+							"type": "string",
+							"enum": [
 								"module"
+							]
+						},
+						"origamiCategory": {
+							"type": "string",
+							"enum": [
+								"components",
+								"primitives",
+								"utilities",
+								"layouts"
 							]
 						},
 						"browserFeatures": {
@@ -96,10 +115,6 @@
 				"description": {
 					"type": "string"
 				},
-				"origamiType": {
-					"type": "string",
-					"enum": ["module", "imageset", "service"]
-				},
 				"origamiVersion": {
 					"type": "number",
 					"enum": [1]
@@ -118,15 +133,6 @@
 						{
 							"type": "string"
 						}
-					]
-				},
-				"origamiCategory": {
-					"type": "string",
-					"enum": [
-						"components",
-						"primitives",
-						"utilities",
-						"layouts"
 					]
 				},
 				"support": {
@@ -206,7 +212,6 @@
 				"origamiType",
 				"origamiVersion",
 				"keywords",
-				"origamiCategory",
 				"support",
 				"supportStatus"
 			]
