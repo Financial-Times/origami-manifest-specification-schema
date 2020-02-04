@@ -24,8 +24,7 @@
 					"type": "array",
 					"children": "string"
 				}
-			},
-			"required": ["template"]
+			}
 		},
 		"brands": {
 			"type": "array",
