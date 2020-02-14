@@ -1,0 +1,17 @@
+{
+	"description": "The JSON Schema representation of the Origami manifest spec",
+	"origamiType": null,
+	"origamiVersion": 1,
+	"keywords": [
+		"origami",
+		"manifest",
+		"spec",
+		"schema"
+	],
+	"support": "https://github.com/Financial-Times/origami-manifest-specification-schema/issues",
+	"supportStatus": "active",
+	"supportContact": {
+		"email": "origami.support@ft.com",
+		"slack": "financialtimes/origami-support"
+	}
+}
