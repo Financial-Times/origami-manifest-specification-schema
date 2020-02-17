@@ -22,7 +22,7 @@
 				},
 				"dependencies": {
 					"type": "array",
-					"children": "string"
+					"items": "string"
 				}
 			}
 		},
@@ -79,13 +79,13 @@
 							"properties": {
 								"required": {
 									"type": "array",
-									"children": {
+									"items": {
 										"type": "string"
 									}
 								},
 								"optional": {
 									"type": "array",
-									"children": {
+									"items": {
 										"type": "string"
 									}
 								}
@@ -168,7 +168,7 @@
 				},
 				"demos": {
 					"type": "array",
-					"children": {
+					"items": {
 						"allOf": [
 							{"$ref": "#/definitions/demo-options"},
 							{
