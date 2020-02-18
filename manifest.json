@@ -15,7 +15,10 @@
 					"type": "string"
 				},
 				"data": {
-					"type": "object"
+					"oneOf": [
+						{"type": "object"},
+						{"type": "string"}
+					]
 				},
 				"documentClasses": {
 					"type": "string"
