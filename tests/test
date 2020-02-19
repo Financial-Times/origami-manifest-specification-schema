@@ -10,12 +10,12 @@ exit_code=0
 if [ "$1" = "-v" ]; then
 	exec 3>&2
 else
-	if ! { >&3; } 2> /dev/null; then
+	if ! { true >&3; } 2> /dev/null; then
 		exec 3>/dev/null
 	fi
 fi
 
-if ! { >&4; } 2> /dev/null; then
+if ! { true >&4; } 2> /dev/null; then
 	exec 4>/dev/null
 fi
 
@@ -33,7 +33,7 @@ for baddy in "$tests_root"/bad/*; do
 	fi
 done
 
-for goody in $tests_root/good/*; do
+for goody in "$tests_root"/good/*; do
 	name="$(basename $goody)"
 	# redirect errors to the third file descriptor so users can turn it on
 	# with ./test 3>&2
