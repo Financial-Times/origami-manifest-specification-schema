@@ -2,8 +2,8 @@
 
 tests_root="$(dirname "$0")"
 schema="$tests_root/../manifest.json"
-pass_symbol="😊 PASS"
-fail_symbol="😭 FAIL"
+pass_symbol="😊 [32mPASS"
+fail_symbol="😭 [31mFAIL"
 exit_code=0
 
 # a little helper so people can get verbose output with `-v`
