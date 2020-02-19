@@ -4,7 +4,7 @@
   "description": "[JSON schema](https://json-schema.org/) for the [Origami.json manifest specification](https://origami.ft.com/spec/v1/manifest/)",
   "main": "manifest.json",
   "scripts": {
-    "test": "ajv compile -s ./manifest.json && ajv -s ./manifest.json -d ./origami.json"
+    "test": "./tests/test"
   },
   "keywords": [],
   "author": "chee <chee@snoot.club>",

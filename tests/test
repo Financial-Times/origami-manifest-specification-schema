@@ -1,0 +1,38 @@
+#!/bin/sh
+
+tests_root="$(dirname "$0")"
+schema="$tests_root/../manifest.json"
+pass_symbol="😊 PASS"
+fail_symbol="😭 FAIL"
+exit_code=0
+
+# a little helper so people can get verbose output with `-v`
+if [ "$1" = "-v" ]; then
+	exec 3>&1
+fi
+
+ajv compile -s "$schema"
+
+for baddy in "$tests_root"/bad/*; do
+	name="$(basename $baddy)"
+	# redirect errors to the third file descriptor so users can turn it on with
+	# ./test 3>&2
+	if ajv -s "$schema" -d "$baddy" > /dev/null 2>&3; then
+		>&2 echo "$fail_symbol bad schema '$name' seemed good"
+		exit_code=1
+	else
+		>&2 echo "$pass_symbol bad schema '$name' seemed bad"
+	fi
+done
+
+for goody in $tests_root/good/*; do
+	name="$(basename $goody)"
+	if ajv -s "$schema" -d "$goody" > /dev/null 2>&3; then
+		>&2 echo "$pass_symbol good schema '$name' seemed good"
+	else
+		>&2 echo "$fail_symbol good schema '$name' seemed bad"
+		exit_code=1
+	fi
+done
+
+exit $exit_code
