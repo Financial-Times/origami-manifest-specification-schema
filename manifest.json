@@ -115,6 +115,94 @@
 			]
 		},
 		{
+			"allOf": [
+				{
+					"properties": {
+						"demosDefaults": {
+							"$ref": "#/definitions/demo-options"
+						},
+						"demos": {
+							"type": "array",
+							"items": {
+								"allOf": [
+									{"$ref": "#/definitions/demo-options"},
+									{
+										"properties": {
+											"name": {
+												"type": "string"
+											},
+											"title": {
+												"type": "string"
+											},
+											"description": {
+												"type": "string"
+											},
+											"brands": {
+												"$ref": "#/definitions/brands"
+											},
+											"hidden": {
+												"type": "boolean"
+											},
+											"display_html": {
+												"type": "boolean"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				},
+				{
+					"anyOf": [
+						{
+							"properties": {
+								"demosDefaults": {
+									"type": "object",
+									"properties": {
+										"template": {
+											"type": "string"
+										}
+									}
+								},
+								"demos": {
+									"items": {
+										"required": [
+											"name",
+											"title",
+											"description"
+										]
+									}
+								}
+							}
+						},
+						{
+							"properties": {
+								"demosDefaults": {
+									"type": "object",
+									"properties": {
+										"template": {
+											"type": "null"
+										}
+									}
+								},
+								"demos": {
+									"items": {
+										"required": [
+											"template",
+											"name",
+											"title",
+											"description"
+										]
+									}
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
 			"properties": {
 				"description": {
 					"type": "string"
@@ -167,49 +255,7 @@
 					},
 					"required": ["email", "slack"]
 				},
-				"ci": {},
-				"demosDefaults": {
-					"$ref": "#/definitions/demo-options"
-				},
-				"demos": {
-					"type": "array",
-					"items": {
-						"allOf": [
-							{"$ref": "#/definitions/demo-options"},
-							{
-								"properties": {
-									"name": {
-										"type": "string"
-									},
-									"title": {
-										"type": "string"
-									},
-									"description": {
-										"type": "string"
-									},
-									"template": {
-										"type": "string"
-									},
-									"brands": {
-										"$ref": "#/definitions/brands"
-									},
-									"hidden": {
-										"type": "boolean"
-									},
-									"display_html": {
-										"type": "boolean"
-									}
-								},
-								"required": [
-									"template",
-									"name",
-									"title",
-									"description"
-								]
-							}
-						]
-					}
-				}
+				"ci": {}
 			},
 			"required": [
 				"description",
