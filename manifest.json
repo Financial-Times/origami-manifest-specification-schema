@@ -54,7 +54,13 @@
 						"origamiType": {
 							"type": "string",
 							"enum": [
-								"imageset"
+								"imageset",
+								"cli",
+								"website",
+								"meta",
+								"config",
+								"example",
+								"library"
 							]
 						}
 					}
