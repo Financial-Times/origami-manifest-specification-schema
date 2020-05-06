@@ -9,7 +9,7 @@
 		"schema"
 	],
 	"support": "https://github.com/Financial-Times/origami-manifest-specification-schema/issues",
-	"supportStatus": "active",
+	"supportStatus": "dead",
 	"supportContact": {
 		"email": "origami.support@ft.com",
 		"slack": "financialtimes/origami-support"
